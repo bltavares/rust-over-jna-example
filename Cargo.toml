@@ -1,0 +1,9 @@
+[package]
+name = "hypercore"
+version = "0.1.0"
+authors = ["bltav"]
+
+[lib]
+crate-type = ["dylib", "rlib"]
+
+[dependencies]
