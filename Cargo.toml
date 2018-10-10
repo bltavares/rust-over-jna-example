@@ -2,6 +2,7 @@
 name = "hypercore"
 version = "0.1.0"
 authors = ["bltav"]
+repository = "https://github.com/bltavares/rust-over-jna-example"
 
 [lib]
 crate-type = ["dylib", "rlib"]
