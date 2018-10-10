@@ -5,6 +5,6 @@ authors = ["bltav"]
 repository = "https://github.com/bltavares/rust-over-jna-example"
 
 [lib]
-crate-type = ["dylib", "rlib"]
+crate-type = ["cdylib", "staticlib", "lib"]
 
 [dependencies]

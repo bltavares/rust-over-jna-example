@@ -5,14 +5,14 @@ sudo: required
 
 env:
   global:
-    - CRATE_NAME=rust-over-jna-example
+    - CRATE_NAME=hypercore
     - RUST_BACKTRACE=1
 
 matrix:
   include:
     - env: TARGET=armv7-unknown-linux-gnueabihf
       rust: nightly
-    - env: TARGET=x86_64-unknown-linux-musl
+    - env: TARGET=x86_64-unknown-linux-musl TYPE=static
       rust: nightly
     - env: TARGET=x86_64-apple-darwin
       rust: nightly
