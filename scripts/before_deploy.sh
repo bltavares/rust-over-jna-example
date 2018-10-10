@@ -19,7 +19,7 @@ main() {
 
   test -f Cargo.lock || cargo generate-lockfile
 
-  cross rustc --bin $PKG_NAME --target $TARGET --release -- -C lto
+  cross rustc --lib $PKG_NAME --target $TARGET --release -- -C lto
   cp target/$TARGET/release/$PKG_NAME $stage/
 
   cd $stage
