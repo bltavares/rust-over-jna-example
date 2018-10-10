@@ -27,10 +27,19 @@ main() {
           ;;
       *)
           linking_args="--crate-type cdylib"
+          ;;
   esac
 
   cross rustc --lib --target $TARGET --release -- $linking_args
-  cp target/$TARGET/release/lib$PKG_NAME.{a,so} $stage/ || true
+
+  case $TYPE in
+      static)
+          cp target/$TARGET/release/lib$PKG_NAME.a $stage/
+          ;;
+      *)
+          cp target/$TARGET/release/lib$PKG_NAME.so $stage/
+          ;;
+  esac
 
   cd $stage
   tar czf $src/$CRATE_NAME-$TRAVIS_TAG-$TARGET.tar.gz *
