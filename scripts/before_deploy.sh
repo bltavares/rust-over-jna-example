@@ -32,9 +32,12 @@ main() {
 
   cross rustc --lib --target $TARGET --release -- $linking_args
 
-  case $TYPE in
-      static)
+  case $TYPE-$TRAVIS_OS_NAME in
+      static-*)
           cp target/$TARGET/release/lib$PKG_NAME.a $stage/
+          ;;
+      *-osx)
+          cp target/$TARGET/release/lib$PKG_NAME.dylib $stage/
           ;;
       *)
           cp target/$TARGET/release/lib$PKG_NAME.so $stage/
