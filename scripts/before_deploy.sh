@@ -1,6 +1,6 @@
 # This script takes care of building the crate and packaging it for release.
 
-PKG_NAME="rust-over-jna-example"
+PKG_NAME="hypercore"
 
 set -ex
 
