@@ -6,7 +6,8 @@ set -ex
 
 main() {
   local src=$(pwd) \
-    stage=
+        stage= \
+        linking_args=
 
   case $TRAVIS_OS_NAME in
     linux)
@@ -19,7 +20,16 @@ main() {
 
   test -f Cargo.lock || cargo generate-lockfile
 
-  cross rustc --lib $PKG_NAME --target $TARGET --release -- -C lto
+  # TODO: combine with -C lto
+  case $TYPE in
+      static)
+          linking_args="--crate-type staticlib"
+          ;;
+      *)
+          linking_args="--crate-type cdylib"
+  esac
+
+  cross rustc --lib --target $TARGET --release -- $linking_args
   cp target/$TARGET/release/$PKG_NAME $stage/
 
   cd $stage
