@@ -18,6 +18,7 @@ main() {
 
   test -f Cargo.lock || cargo generate-lockfile
 
+  cargo install --force cargo-crate-type
   case $TYPE in
   static)
     cargo crate-type static
